@@ -87,7 +87,6 @@ void setup()
     }
 
     // --- VAST IP-ADRES INSTELLEN (Telenet netwerk) ---
-    // --- Eventueel verwijderen op andere locatie ( vb school)
     IPAddress ip(192, 168, 0, 200);     // Vast IP-adres voor je Arduino
     IPAddress gateway(192, 168, 0, 1);  // Je Telenet modem IP-adres
     IPAddress subnet(255, 255, 255, 0); // Subnetmasker
@@ -153,7 +152,7 @@ void loop()
                     float dp = calculateDewPoint(t, h);
                     float ah = calculateAbsoluteHumidity(t, h);
 
-                    // Lees CO2 uit en behoud de laatste geldige waarde om '0' waarden te voorkomen static float lastValidCo2 = 400.0; // Startwaarde op normale buitenlucht
+                    // Lees CO2 uit en behoud de laatste geldige waarde om '0' waarden te voorkomen
                     if (airSensor.dataAvailable())
                     {
                         float currentCo2 = airSensor.getCO2();
@@ -214,6 +213,10 @@ void loop()
                         client.println(".label { font-size: 11px; text-transform: uppercase; color: var(--text-muted); font-weight: 600; letter-spacing: 1px; margin-bottom: 8px; }");
                         client.println(".value { font-size: 26px; font-weight: 700; color: var(--accent); }");
                         client.println(".card.wide .value { font-size: 32px; }");
+                        client.println("/* CO2 Status kleuren */");
+                        client.println(".co2-good { color: #4ade80 !important; }");
+                        client.println(".co2-moderate { color: #fb923c !important; }");
+                        client.println(".co2-bad { color: #f87171 !important; }");
                         client.println("</style>");
                         client.println("<script>");
                         client.println("function fetchData() {");
@@ -222,10 +225,20 @@ void loop()
                         client.println("    document.getElementById('hum').innerText = data.humidity.toFixed(1) + ' %';");
                         client.println("    document.getElementById('dew').innerText = data.dewpoint.toFixed(1) + ' °C';");
                         client.println("    document.getElementById('abs').innerText = data.absolutedelta.toFixed(1) + ' g/m\u00b3';");
-                        client.println("    document.getElementById('co2').innerText = data.co2.toFixed(0) + ' ppm';");
+                        client.println("    let co2Val = data.co2;");
+                        client.println("    let co2Elem = document.getElementById('co2');");
+                        client.println("    co2Elem.innerText = co2Val.toFixed(0) + ' ppm';");
+                        client.println("    co2Elem.classList.remove('co2-good', 'co2-moderate', 'co2-bad');");
+                        client.println("    if (co2Val < 800) {");
+                        client.println("      co2Elem.classList.add('co2-good');");
+                        client.println("    } else if (co2Val <= 1200) {");
+                        client.println("      co2Elem.classList.add('co2-moderate');");
+                        client.println("    } else {");
+                        client.println("      co2Elem.classList.add('co2-bad');");
+                        client.println("    }");
                         client.println("  }).catch(err => console.error('Fout bij ophalen data:', err));");
                         client.println("}");
-                        client.println("setInterval(fetchData, 5000);");
+                        client.println("setInterval(fetchData, 2000);");
                         client.println("window.onload = fetchData;");
                         client.println("</script>");
                         client.println("</head><body>");
