@@ -1,3 +1,31 @@
+/**
+ * Title: brief Climate Monitoring & Web Dashboard Server
+ *
+ *  author  : Georges Hart
+ *  date    : 2026
+ *  version : 0509206
+ *
+ *
+ *  details :
+ *     Arduino sketch for an ESP32/Arduino R4 WiFi-based environmental monitor
+ *     that measures temperature, relative humidity, dew point, absolute humidity,
+ *     and CO2 concentrations, serving a real-time JSON API and modern HTML dashboard.
+ *
+ *  hardware Components:
+ *   - Arduino Uno WiFi R4 (or compatible board with WiFiS3)
+ *   - Adafruit SHT45 (Temperature & Humidity Sensor) via I2C (Wire1 / Qwiic)
+ *   - SparkFun SCD30 (CO2 Sensor) via I2C (Wire1 / Qwiic)
+ *
+ *  dependencies:
+ *   - Arduino.h
+ *   - Wire.h
+ *   - Adafruit_SHT4x.h
+ *   - SparkFun_SCD30_Arduino_Library.h
+ *   - WiFiS3.h
+ *   - secrets.h (Requires WIFI_SSID and WIFI_PASS definitions)
+ *
+ */
+
 #include <Arduino.h>
 #include <Wire.h>
 #include "Adafruit_SHT4x.h"

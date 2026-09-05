@@ -1,5 +1,5 @@
-# Thermoregulatie project - Georges Hart
-### voorbereiding les HeLdB
+# Thermoregulation SHD45 & SCD-30
+##### Georges Hart - september '26
 
 ```mermaid
 
