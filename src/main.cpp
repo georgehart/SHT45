@@ -224,7 +224,7 @@ void loop()
                         client.println("    document.getElementById('co2').innerText = data.co2.toFixed(0) + ' ppm';");
                         client.println("  }).catch(err => console.error('Fout bij ophalen data:', err));");
                         client.println("}");
-                        client.println("setInterval(fetchData, 2000);");
+                        client.println("setInterval(fetchData, 5000);");
                         client.println("window.onload = fetchData;");
                         client.println("</script>");
                         client.println("</head><body>");

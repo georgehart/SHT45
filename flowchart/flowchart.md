@@ -7,7 +7,7 @@
 
 
 flowchart TD
-    Start([Booting]) --> Setup[Setup]
+    Start(["Start (Boot)"]) --> Setup[Setup]
     
     subgraph Setup_Phase ["Initialisation & Network (Setup)"]
         Setup --> InitSerial[init Serial Monitor]
