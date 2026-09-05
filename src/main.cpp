@@ -194,7 +194,7 @@ void loop()
                         client.println("<!DOCTYPE html>");
                         client.println("<html lang='nl'><head><meta charset='UTF-8'>");
                         client.println("<meta name='viewport' content='width=device-width, initial-scale=1.0'>");
-                        client.println("<title>Klimaat Monitor | Dashboard</title>");
+                        client.println("<title>Thermoregulatie - GH</title>");
                         client.println("<link href='https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap' rel='stylesheet'>");
                         client.println("<style>");
                         client.println(":root { --bg-color: #0f172a; --card-bg: #1e293b; --text-main: #f8fafc; --text-muted: #94a3b8; --accent: #38bdf8; }");
