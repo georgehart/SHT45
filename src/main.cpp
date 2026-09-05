@@ -87,6 +87,7 @@ void setup()
     }
 
     // --- VAST IP-ADRES INSTELLEN (Telenet netwerk) ---
+    // --- Eventueel verwijderen op andere locatie ( vb school)
     IPAddress ip(192, 168, 0, 200);     // Vast IP-adres voor je Arduino
     IPAddress gateway(192, 168, 0, 1);  // Je Telenet modem IP-adres
     IPAddress subnet(255, 255, 255, 0); // Subnetmasker
