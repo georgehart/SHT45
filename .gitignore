@@ -1,9 +1,16 @@
-# PlatformIO
+# PlatformIO Build and Environment Folders
 .pio/
-.build/
-
-# VS Code (negeer de hele map)
 .vscode/
 
-# Secrets
+# Compiled object files and binaries
+*.o
+*.d
+*.bin
+*.hex
+
+# Sensitive user files (API keys, passwords)
 src/secrets.h
+
+# Operating System temporary files
+.DS_Store
+Thumbs.db
